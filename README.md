@@ -1,12 +1,12 @@
 ### Assignments and solutions of the 0-100 Cohort of @hkirat
 
 # Pending Assignment :
-  ## Week 3 
-  ## Week 4
+  1. Week 3 
+  2. Week 4
 
 # Completed Assignments :
-  ## Week 1
-  ## Week 2
+  1. Week 1
+  2. Week 2
 
 # Overview 
 
