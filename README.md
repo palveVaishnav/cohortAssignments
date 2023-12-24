@@ -16,7 +16,11 @@
       2.Category wise xpenditure
       3.findLargestElement
 
-  
-# Pending Assignment :
   ## Week 1 - Offline
-  ## Week 2 
+  ## Week 2 - 01-async-js
+
+
+# Pending Assignment :
+  ## Week 2 - 02-nodejs
+  ## Week 3 
+    

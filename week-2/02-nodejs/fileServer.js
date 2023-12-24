@@ -8,14 +8,55 @@
   2. GET /file/:filename - Returns content of given file by name
      Description: Use the filename from the request path parameter to read the file from `./files/` directory
      Response: 200 OK with the file content as the response body if found, or 404 Not Found if not found. Should return `File not found` as text if file is not found
-     Example: GET http://localhost:3000/file/example.txt
-    - For any other route not defined in the server return 404
-    Testing the server - run `npm run test-fileServer` command in terminal
+     Example: GET http://localhost:3000/file/example.txt        
  */
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
 
 
+app.get("/files", (req, res) => {
+  fs.readdir(path.join(__dirname,'./files/'),(err,files)=>{
+    if(err){
+      return res.status(500).json({
+        error:'Failed to retrive the list'
+      });
+    }
+    res.status(200).json(files);
+  });
+});
+
+/**
+ * 2. GET /file/:filename - Returns content of given file by name
+     Description: Use the filename from the request path parameter to read 
+     the file from `./files/` directory
+     Response: 200 OK with the file content as the response body if found, 
+     or 404 Not Found if not found. Should return `File not found` as text if file is not found
+     Example: GET http://localhost:3000/file/example.txt
+ */
+app.get('/file/:filename',(req,res)=>{
+  const fileName = req.params.filename;
+  const filePath  = path.join(__dirname,'./files/',fileName);
+  fs.readFile(filePath,'utf-8',(err,data)=>{
+    if(err){
+      return res.status(404).send('File not found');
+    }
+    res.send(data);
+  });
+});
+
+// - For any other route not defined in the server return 404
+app.all('*',(req,res)=>{
+  res.status(404).send('Route not found')
+})
+
+
+app.listen(3000,()=>{
+  console.log("Server is running at http://localhost:3000/files");
+});
+
 module.exports = app;
+
+// Testing the server - run `npm run test-fileServer` command in terminal

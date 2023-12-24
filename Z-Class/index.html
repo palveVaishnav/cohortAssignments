@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum </title>
+
+</head>
+
+<body>
+    <input type="text" placeholder="first Element" id="num1" oninput="doSum()"> <br>
+    <input type="text" Placeholder="second Element" id="num2" oninput="doSum()"> <br>
+    <!-- <button onclick="doSum()">Calculate Sum</button> -->
+    <br><br>
+    <p>The Result is : <span id="result"></span> </p>
+    <script>
+        async function doSum() {
+            let num1 = parseInt(document.getElementById('num1').value) || 0;
+            let num2 = parseInt(document.getElementById('num2').value) || 0;
+            // let sum = num1 + num2 ;
+            // document.getElementById('result').innerHTML = sum;
+            let response = await fetch("https://sum-server.100xdevs.com/sum?a=" + num1 + "&b=" + num2)
+            let ans = await response.text()
+            document.getElementById('result').innerHTML = ans;
+
+            // fetch("https://sum-server.100xdevs.com/sum?a="+num1+"&b="+num2)
+            // .then((Response)=>{
+            //     console.log(Response);
+            //     Response.text().then((ans)=>{
+            //         // console.log(ans);
+            //         document.getElementById('result').innerHTML = ans;
+            //     })
+            // })
+        }
+    </script>
+</body>
+
+</html>
