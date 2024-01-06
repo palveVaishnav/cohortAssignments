@@ -4,7 +4,8 @@ const express = require("express");
 const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
 
-const cors = require("cors")
+const cors = require("cors");
+const { nullable } = require("zod");
 const app = express();
 
 app.use(express.json());
@@ -13,6 +14,13 @@ app.use(cors());
 
 app.post("/todo", async (req, res) => {
     const createPayload = req.body;
+
+    if (createPayload.title == "" && createPayload.description == "") {
+        return res.status(400).json({
+            msg: "Both the fields can't be empty !",
+        })
+    }
+
     const parsedPayload = createTodo.safeParse(createPayload);
     if (!parsedPayload.success) {
         res.status(411).json({
@@ -68,6 +76,8 @@ app.delete("/clear", async (req, res) => {
 })
 
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log("Server at : http://localhost:3000");
+})
 
 

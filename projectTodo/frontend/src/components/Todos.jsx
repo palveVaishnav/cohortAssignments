@@ -1,25 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-export function Todos({ todos }) {
-  const handleMarkCompleted = (todoId) => {
-    // Implement the logic to mark a todo as completed
-    // This could involve making an API request to your server
-    console.log(`Mark todo ${todoId} as completed`);
-  };
+export function TodosList() {
+  const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/todos");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch todos. Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setTodos(data.todos);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTodos();
+  }, []);
 
   return (
     <div>
-      {todos.map(function (todo) {
-        return (
-          <div key={todo.id}>
-            <h1>{todo.title}</h1>
-            <h2>{todo.description}</h2>
-            <button onClick={() => handleMarkCompleted(todo.id)}>
-              {todo.completed === true ? 'Completed' : 'Mark as Completed'}
-            </button>
-          </div>
-        );
-      })}
+      <h2>Todo List</h2>
+
+      {loading && <p>Loading...</p>}
+
+      {error && <p>Error: {error}</p>}
+
+      {todos.length === 0 && !loading && !error && <p>No todos available.</p>}
+
+      {todos.length > 0 && (
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo._id}>
+              <strong>{todo.title}</strong> - {todo.description}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
