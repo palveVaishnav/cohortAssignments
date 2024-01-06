@@ -1,4 +1,4 @@
-$ Assignments and Projects of the 0-100 Cohort by [@hkirat](github.com/hkirat)
+$ Assignments and Projects of the 0-100 Cohort by [@hkirat](https://github.com/hkirat)
 
 ### Pending Assignment :
   - Week 3 
@@ -49,5 +49,5 @@ $ Assignments and Projects of the 0-100 Cohort by [@hkirat](github.com/hkirat)
     
 
 #### Author 
-[@palvevaishnav](github.com/palvevaishnav)
+[@palvevaishnav](https://github.com/palvevaishnav)
     
