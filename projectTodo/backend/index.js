@@ -4,6 +4,7 @@ const express = require("express");
 const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
 
+
 const cors = require("cors");
 const { nullable } = require("zod");
 const app = express();
@@ -41,6 +42,9 @@ app.post("/todo", async (req, res) => {
 
 });
 
+
+
+
 app.get("/todos", async (req, res) => {
     const todos = await todo.find({});
     res.json({
@@ -75,9 +79,10 @@ app.delete("/clear", async (req, res) => {
     });
 })
 
+const PORT = process.env.PORT;
 
-app.listen(3000, () => {
-    console.log("Server at : http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Server at : http://localhost:${PORT}`);
 })
 
 

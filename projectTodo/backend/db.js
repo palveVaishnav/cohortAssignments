@@ -1,10 +1,7 @@
-/* 
-
-*/
+require("dotenv").config();
 
 const mongoose = require("mongoose")
-
-mongoose.connect("database url here");
+mongoose.connect(process.env.MONGODB_URI)
 const todoSchema = mongoose.Schema({
     title: String,
     description : String,
