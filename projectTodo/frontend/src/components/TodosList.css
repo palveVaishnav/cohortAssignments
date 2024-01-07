@@ -1,0 +1,78 @@
+.previousTodosContainer,
+.inputArea{
+    /* background-color: rgb(221, 163, 88);; */
+}
+
+.previousTodosContainer{
+    /* background-color: rgb(255, 255, 255); */
+    padding: 10px;
+    border: 1px dotted black  ;    
+}
+
+.previousTodos{
+    display: grid;    
+    grid-template-columns: repeat(4,1fr);
+
+}
+.previousTodo{
+    border: 2px dotted rgb(46, 44, 44);
+    background-color: rgb(250, 198, 135);
+    border-radius: 10px ;
+    margin:10px;
+    padding: 5px 20px ;
+    transition: transform .4s;
+}
+.previousTodo:hover{
+    transform: scale(1.02);
+    border: 2px solid rgb(46, 44, 44);
+    background-color: rgb(255, 145, 0);
+}
+
+.previousTodoStatus{
+    display: flex;
+}
+
+
+.previousTodoTitle{
+    border:1px dashed black;
+    padding: 5px;
+}
+.previousTodo:hover .previousTodoTitle{
+    background-color: white;
+}
+
+.previousTodoDescription{}
+
+.inputArea{
+    display: grid;
+    place-items: center;
+}
+
+.newTodoCard{
+    margin: 2em;
+    padding: 1em;    
+    display: grid;
+    background-color: rgb(244, 175, 128);
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 5px 5px 10px 5px rgb(200, 122, 71);
+    border-radius: 1em;
+    width: 18em;
+}
+
+.addButton{
+    /* background-color: rgb(162, 217, 145); */
+    font-size: large;
+
+}
+.addButton:hover{
+    background-color: rgb(255, 145, 0);
+    color: white;
+}
+
+
+.inputTitle,
+.inputDescription,
+.addButton{
+    padding: 10px;
+    margin: 10px;    
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./TodosList.css";  // Import the CSS file
 
 export function TodosList() {
   const [todos, setTodos] = useState([]);
@@ -25,7 +26,7 @@ export function TodosList() {
   }, []);
 
   return (
-    <div>
+    <div className="previousTodosContainer">
       <h2>Todo List</h2>
 
       {loading && <p>Loading...</p>}
@@ -35,13 +36,19 @@ export function TodosList() {
       {todos.length === 0 && !loading && !error && <p>No todos available.</p>}
 
       {todos.length > 0 && (
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo._id}>
-              <strong>{todo.title}</strong> - {todo.description}
-            </li>
+        <div className="previousTodos">
+          {todos.slice().reverse().map((todo) => (
+            <div key={todo._id} className="previousTodo">
+              <h3 className="previousTodoTitle">{todo.title}</h3>
+              <h5 className="previousTodoDescription">{todo.description}</h5>
+              <div className="previousTodoStatus">
+                <input type="checkbox"></input>
+                <p>Mark As Complete</p>
+              </div>
+              <br />
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

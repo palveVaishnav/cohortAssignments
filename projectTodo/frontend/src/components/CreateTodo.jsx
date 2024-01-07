@@ -2,6 +2,7 @@
 // react query 
 
 import { useState } from "react"
+import "./TodosList.css";  // Import the CSS file
 
 export function CreateTodo() {
 
@@ -61,47 +62,37 @@ export function CreateTodo() {
 
 
     return <div>
-        <input
-            style={{
-                padding: 10,
-                margin: 10,
-            }}
-            id="title"
-            type="text"
-            placeholder="title"
-            value={title} //which is set to clear by the addTodo function
-            onChange={(e) => {
-                setTitle(e.target.value);
-            }}>
-        </input>
-        <br />
-        <input
-            style={{
-                padding: 10,
-                margin: 10,
-            }}
-            id="description"
-            type="text"
-            placeholder="description"
-            value={description}
-            onChange={(e) => {
-                setDescription(e.target.value);
-            }}>
-        </input>
-        <br />
-        <button
-            style={{
-                padding: 10,
-                margin: 10,
-            }}
-            id="markButton"
-            onClick={addTodo}
-        //  using the addTOdo as an object/state and not as function
-        //  if used as function : onClick="addTodo()";
-        >
-            Add a Todo
-        </button>
-        {PopupOpen && <Popup m={popUpMsg} />}
+        <section className="inputArea">
+            <div className="newTodoCard">
+                <input
+                    className="inputTitle"
+                    type="text"
+                    placeholder="Title"
+                    value={title} //which is set to clear by the addTodo function
+                    onChange={(e) => {
+                        setTitle(e.target.value);
+                    }}>
+                </input>
+                <input
+                    className="inputDescription"
+                    type="text"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => {
+                        setDescription(e.target.value);
+                    }}>
+                </input>
+                <button
+                    className="addButton"
+                    onClick={addTodo}
+                //  using the addTOdo as an object/state and not as function
+                //  if used as function : onClick="addTodo()";
+                >
+                    Add Todo
+                </button>
+                {PopupOpen && <Popup m={popUpMsg} />}
+            </div>
+        </section>
     </div>
 }
 
