@@ -16,13 +16,19 @@ router.post('/signup', (req, res) => {
         Output: { message: 'Admin created successfully' }
      */
     const { username, password } = req.body;
-    Admin.create({
-        username: username,
-        password: password
-    });
-    res.json({
-        message: 'Admin created successfully'
-    });
+    Admin
+        .create({
+            username: username,
+            password: password
+            // username: "admin",
+            // password: "password"
+        })
+        .then(() => {
+            res.json({
+                message: 'Admin created successfully'
+            });
+        });
+
 });
 
 router.post('/courses', adminMiddleware, (req, res) => {
@@ -34,16 +40,20 @@ router.post('/courses', adminMiddleware, (req, res) => {
         Output: { message: 'Course created successfully', courseId: "new course id" }
      */
     const { title, description, price, imageLink } = req.body;
-    Course.create({
-        title: title,
-        description: description,
-        price: price,
-        imageLink: imageLink,
-    });
-    res.json({
-        message: 'Course created successfully',
-        courseId: "new course id"
-    })
+    Course
+        .create({
+            title: title,
+            description: description,
+            price: price,
+            imageLink: imageLink,
+        })
+        .then(() => {
+            res.json({
+                message: 'Course created successfully',
+                courseId: "new course id"
+            })
+        })
+
 });
 
 router.get('/courses', adminMiddleware, (req, res) => {
