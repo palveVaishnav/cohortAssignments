@@ -15,6 +15,7 @@ export function CreateTodo() {
     const [PopupOpen, setPopupOpen] = useState(false);
     const [popUpMsg, setPopupMessage] = useState("");
 
+    // eslint-disable-next-line react/prop-types
     function Popup({ m }) {
         return (
             <div>
@@ -31,7 +32,7 @@ export function CreateTodo() {
 
     const addTodo = async () => {
         try {
-            await fetch("http://localhost:3000/todo", {
+            await fetch("https://localhost:3000", {
                 method: "POST",
                 body: JSON.stringify({
                     title: title,

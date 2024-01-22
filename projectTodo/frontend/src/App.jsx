@@ -10,7 +10,7 @@ function App() {
 
   const [todos,setTodos]=useState([]);
 
-  fetch("https://localhost:3000/todos")
+  fetch("https://localhost:3000")
     .then(async (res)=> {
       const json = await  res.json();
       setTodos(json.todos);

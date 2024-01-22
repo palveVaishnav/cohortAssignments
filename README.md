@@ -8,6 +8,7 @@ $ Assignments and Projects of the 0-100 Cohort by [@hkirat](https://github.com/h
 ### Completed Assignments :
   - Week 1
   - Week 2
+  - Week 3 : 01-Middlewares,jwt
 
 ## Overview 
 ##### Week 1-js -

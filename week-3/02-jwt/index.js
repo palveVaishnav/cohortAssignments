@@ -14,7 +14,23 @@ const jwtPassword = 'secret';
  *                        the password does not meet the length requirement.
  */
 function signJwt(username, password) {
-    // Your code here
+    // Your code 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(username) || password.length < 6) {
+        return null;
+    }
+
+    // Including in the payload
+    const user = {
+        username: username,
+        password: password
+    }
+
+    // const key = "JHUHKSBKbahbgdiuu545j";
+
+    // generate  the JWt 
+    const token = jwt.sign(user, jwtPassword);
+    return token;
 }
 
 /**
@@ -27,6 +43,14 @@ function signJwt(username, password) {
  */
 function verifyJwt(token) {
     // Your code here
+    try {
+        const decoded = jwt.verify(token, jwtPassword);
+        return true;
+    } catch (e) {
+        // not valid
+        return false;
+    }
+
 }
 
 /**
@@ -38,12 +62,27 @@ function verifyJwt(token) {
  */
 function decodeJwt(token) {
     // Your code here
+    try {
+        const decoded = jwt.decode(token);
+        // return true;
+        if(decoded){
+            return true;        
+        }else{
+            return false;
+        }
+    } catch (e) {
+        // not valid
+        return false;
+    }
 }
 
 
 module.exports = {
-  signJwt,
-  verifyJwt,
-  decodeJwt,
-  jwtPassword,
+    signJwt,
+    verifyJwt,
+    decodeJwt,
+    jwtPassword,
 };
+
+
+

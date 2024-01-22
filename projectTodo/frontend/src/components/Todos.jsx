@@ -9,7 +9,8 @@ export function TodosList() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await fetch("http://localhost:3000/todos");
+        const response = await fetch("https://localhost:3000");
+        console.log(response);
         if (!response.ok) {
           throw new Error(`Failed to fetch todos. Status: ${response.status}`);
         }

@@ -16,13 +16,3 @@ module.exports = {
 
 
 
-/**
- * {
- *      title:string
- *      description: string 
- * }
- * {
- *      id : string 
- * }
- */
-
